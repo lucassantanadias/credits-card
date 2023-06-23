@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <!--adicionando fonte-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastre o seu cartão</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <form>
+    <!--adicionando o cartão-->
+    <section id="credit-card">
+      <div class="front"></div>
+      <div class="back"></div>
+    </section>
+    <!--adcionando os inputs-->
+    <section class="inputs flex">
+      <div class="input-wrapper">
+        <label for="cc-number">Número do cartão</label>
+        <input id="cc-number" type="text" placeholder="**** **** **** ****" required />
+        <div class="warning">
+          <img src="https://i.ibb.co/Sf4FkBp/Vector-1.png" alt="Ícone de erro" />
+          Insira um número de cartão válido
+        </div>
+      </div>
+      <div class="input-wrapper">
+        <label for="cc-holder">Nome do titular</label>
+        <input id="cc-holder" type="text" placeholder="Nome como está no cartão" />
+      </div>
+      <div class="col-2 flex">
+        <div class="input-wrapper">
+          <label for="cc-validity">Validade</label>
+          <input type="text" id="cc-validity" placeholder="MM/YY" />
+        </div>
+        <div class="input-wrapper">
+          <label class="flex help" for="cc-cvv">CVV
+            <!--adicionando ícone de ajuda-->
+            <img src="https://i.ibb.co/jhVzHkr/Question.png" alt="Ìcone de ajuda"
+              title="O número, geralmente, está nas costas do seu cartão" />
+          </label>
+          <input type="text" id="cc-cvv" placeholder="***" />
+        </div>
+      </div>
+    </section>
+    <section class="info-security flex">
+      <!--adcionando ícone de segurança-->
+      <img src="https://i.ibb.co/4VXpqbM/Vector.png" alt="Ícone de segurança" />
+      Seus dados estão seguros
+    </section>
+    <!--adicionando botão-->
+    <button id="addCard">Adicionar cartão</button>
+  </form>
+  <!--adicionando a biblioteca do js para formatar os inputs-->
+  <script src="https://unpkg.com/imask"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

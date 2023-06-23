@@ -1,0 +1,200 @@
+* {
+  margin: 0; /*tira os espaços externos*/
+  padding: 0; /*tira o preeenchimento interno*/
+  box-sizing: border-box; /*faz a medida da caixa como a borda da caixa*/
+  --webkit-font-smoothing: antialiased; /*para deixar as fontes mais bonitas.*/
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #2e3135;
+}
+
+/*Aplicando a fonte em tudo.*/
+body,
+input,
+button {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.6rem;
+}
+
+form {
+  padding: 2.4rem; /*rem é pegar o px e dividir por 10*/
+  max-width: 40rem;
+  margin: auto; /*Para a caixa ficar centralizada.*/
+}
+
+#credit-card {
+  width: 32.8rem;
+  height: 21.2rem;
+
+  perspective: 60rem; /*a perspective serve para dar uma impressão 3d do objeto, poderia colocar o position relative para o cartão ficar de volta no lugar, mas a propriedade permite um efeito melhor.*/
+}
+
+#credit-card > div {
+  width: inherit; /*Vai herdar a largura do pai o (credit-card)*/
+  height: inherit; /*Vai herdar a altura do pai o (credit-card)*/
+  position: absolute; /*Usei para deixar as costas do cartão em cima do outro.*/
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  /*propriedades que ajudam no efeito 3D*/
+  transform-style: preserve-3d;
+  backface-visibility: hidden; /*hidden (esconder quem está por trás das coisas.)*/
+
+  /*Responsável pelo magnífico efeito de flip*/
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/*usei o (https://pt-br.imgbb.com/) para poder pegar os links das fotos. 
+{metódo diferente} */
+
+#credit-card .front {
+  background: url(https://i.ibb.co/9H5RdPz/Property-1-Default.png) no-repeat;
+  /*Responsável por deixar a frente do cartão na frente.*/
+  transform: rotateY(0);
+}
+
+#credit-card .back {
+  background: url(https://i.ibb.co/x2kXkVN/Property-1-back.png) no-repeat;
+  /*Responsável por deixar as costas do cartão atrás.*/
+  transform: rotateY(-180deg);
+  top: -5px; /*Deixei o cartão exatamente na posição do front.*/
+}
+
+/*Adicionando o efeito de virar o cartão quando o mouse está em cima.*/
+
+#credit-card:active .front, /*Quando eu clico com o mouse, acontece o mesmo efeito do hover, fica mais prático no mobile. É a ação de clicar no objeto para acontecer a animação*/
+#credit-card:hover .front {
+  transform: rotateY(180deg);
+}
+
+#credit-card:active .back,
+#credit-card:hover .back {
+  transform: rotateY(0deg);
+}
+
+.flex {
+  display: flex;
+}
+
+.inputs {
+  margin-top: 4.8rem;
+
+  /*Precisa do display flex para funcionar.*/
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+label {
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: #e5e7eb;
+
+  /*botão de ajuda*/
+  gap: 0.4rem;
+  align-items: center;
+}
+
+input {
+  margin-top: 0.4rem;
+
+  width: 100%; /*Deixa o campo abaixo do nome.*/
+  font-family: "source sans pro";
+
+  padding: 1.2rem;
+  border: 0.1rem solid #0b0909;
+
+  background: #0b0909;
+  border-radius: 0.4rem;
+
+  color: #f3f4f6;
+}
+
+input:focus {
+  outline: 0.15rem solid #0b0909;
+}
+
+/*A forma mostrada no vídeo, para os inputs ficarem um do lado do outro, foi esta.*/
+.col-2 {
+  gap: 2.4rem;
+  align-items: center;
+}
+
+/*Pegando o input de validade*/
+.col-2 .input-wrapper:nth-child(1) {
+  width: 18.2rem;
+  height: 4.8rem;
+}
+
+/*Pegando o input do cvv*/
+.col-2 .input-wrapper:nth-child(2) {
+  width: 12.9rem;
+  height: 4.8rem;
+}
+
+/*botão de ajuda*/
+.help img {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.info-security {
+  margin-top: 4.8rem;
+  justify-content: center;
+  gap: 0.8rem;
+
+  color: #e5e7eb;
+  font-size: 1.4rem;
+}
+
+button {
+  margin-top: 6.8rem;
+  width: 32.7rem;
+  height: 5.6rem;
+
+  background: #0d0d0ecd;
+  color: #e5e7eb;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  border: 0;
+  border-radius: 0.4rem;
+
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 2.4rem;
+
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background-color: #19161dd5;
+}
+
+/*Adicionando o input inválido*/
+/*obs:tem que colocar o input como "required"*/
+/*sem o focus, o input ficaria sempre vermelho.*/
+input:invalid:focus {
+  border: 0.15rem solid #fb7185;
+}
+
+/*Só fica válido quando clico com mouse em cima*/
+input:invalid:focus + .warning {
+  font-size: 1.4rem;
+  margin-top: 0.8rem;
+  color: #fb7185;
+
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* + pega a tag que está ao lado. warning está posterior ao input*/
+input + .warning {
+  display: none;
+}
