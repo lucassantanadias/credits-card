@@ -68,8 +68,8 @@ form {
 }
 
 /*Adicionando o efeito de virar o cartão quando o mouse está em cima.*/
-
-#credit-card:active .front, /*Quando eu clico com o mouse, acontece o mesmo efeito do hover, fica mais prático no mobile. É a ação de clicar no objeto para acontecer a animação*/
+/*Quando eu clico com o mouse, acontece o mesmo efeito do hover, fica mais prático no mobile. É a ação de clicar no objeto para acontecer a animação*/
+#credit-card:active .front,
 #credit-card:hover .front {
   transform: rotateY(180deg);
 }
